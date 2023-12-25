@@ -1,4 +1,4 @@
-import { Document, Schema } from "mongoose";
+import { Document, Schema, model, models } from "mongoose";
 
 export interface IOrder extends Document {
   createdAt: Date;
@@ -33,3 +33,7 @@ const OrderSchema = new Schema({
   event: { type: Schema.Types.ObjectId, ref: "Event" },
   buyer: { type: Schema.Types.ObjectId, ref: "User" },
 });
+
+const Order = models.Order || model("Order", OrderSchema);
+
+export default Order;
