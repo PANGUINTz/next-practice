@@ -11,8 +11,6 @@ const NavItems = () => {
     <ul className="md:flex-between flex w-full flex-col items-start gap-5 md:flex-row">
       {headerLinks.map((link) => {
         const isActive = pathname === link.route;
-        console.log(isActive);
-
         return (
           <li
             key={link.route}
