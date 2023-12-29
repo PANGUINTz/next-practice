@@ -24,10 +24,10 @@ export type createEventParams = {
     title: string;
     description: string;
     location?: string;
-    createAt: Date;
     imageUrl: string;
     startDateTime: Date;
     endDateTime: Date;
+    categoryId: string;
     price?: string;
     isFree: boolean;
     url?: string;

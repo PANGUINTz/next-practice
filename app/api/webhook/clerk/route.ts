@@ -5,9 +5,6 @@ import { createUser, deleteUser, updateUser } from "@/lib/actions/user.actions";
 import { clerkClient } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
-console.log(process.env.WEBHOOK_SECRET);
-console.log(process.env.MONGODB_URI);
-
 export async function POST(req: Request) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET;
@@ -55,12 +52,13 @@ export async function POST(req: Request) {
   }
 
   // Get the ID and type
+  const { id } = evt.data;
   const eventType = evt.type;
-  console.log(eventType);
 
   if (eventType === "user.created") {
     const { id, email_addresses, image_url, first_name, last_name, username } =
       evt.data;
+
     const user = {
       clerkId: id,
       email: email_addresses[0].email_address,
@@ -79,6 +77,7 @@ export async function POST(req: Request) {
         },
       });
     }
+
     return NextResponse.json({ message: "OK", user: newUser });
   }
 
@@ -93,6 +92,7 @@ export async function POST(req: Request) {
     };
 
     const updatedUser = await updateUser(id, user);
+
     return NextResponse.json({ message: "OK", user: updatedUser });
   }
 
@@ -100,6 +100,7 @@ export async function POST(req: Request) {
     const { id } = evt.data;
 
     const deletedUser = await deleteUser(id!);
+
     return NextResponse.json({ message: "OK", user: deletedUser });
   }
 
