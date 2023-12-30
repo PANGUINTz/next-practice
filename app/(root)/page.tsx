@@ -58,7 +58,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
         <Collection
           data={events?.data}
           emptyTitle="No Events Found"
-          empryStateSubject="Come back later"
+          emptyStateSubject="Come back later"
           collectionType="All_Events"
           limit={6}
           page={1}
