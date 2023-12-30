@@ -5,7 +5,7 @@ import Card from "./Card";
 type CollectionProps = {
   data: IEvent[];
   emptyTitle: string;
-  empryStateSubject: string;
+  emptyStateSubject: string;
   collectionType: "Events_Organized" | "My_Tickets" | "All_Events";
   limit: number;
   page: number | string;
@@ -16,7 +16,7 @@ type CollectionProps = {
 const Collection = ({
   data,
   emptyTitle,
-  empryStateSubject,
+  emptyStateSubject,
   collectionType,
   limit,
   page,
@@ -42,7 +42,7 @@ const Collection = ({
       ) : (
         <div className="flex-center wrapper min-h-[200px] w-full flex-col gap-3 rounded-[14px] bg-grey-50 py-28 text-center">
           <h3 className="p-bold-20 md:h5-bold">{emptyTitle}</h3>
-          <p className="p-regular-14">{empryStateSubject}</p>
+          <p className="p-regular-14">{emptyStateSubject}</p>
         </div>
       )}
     </div>
